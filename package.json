@@ -2,10 +2,11 @@
   "name": "y",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "browser-refresh server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/Tompagpag/pong-websocket#readme",
   "dependencies": {
     "finalhandler": "^1.2.0",
-    "serve-static": "^1.15.0"
+    "serve-static": "^1.15.0",
+    "socket.io": "^4.5.4"
   }
 }
