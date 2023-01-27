@@ -13,7 +13,7 @@ export default class ClientPong {
 
     listenServer() {
         // Réception des infos début de partie
-        // this.socket.on('server:players:infos', this.UI.uiShowInfos)
+        this.socket.on('server:players:infos', this.UI.uiShowInfos)
         // Ecoute le retour de pseudo existant
         this.socket.on('server:user:pseudo_exists', () => { this.UI.pseudoChoice(true); } );
         // Ecoute le retour de connexion validée
@@ -26,5 +26,9 @@ export default class ClientPong {
         document.addEventListener('local:user:pseudo', (e) => {
             this.socket.emit('client:user:pseudo', e.detail.user);
         });
+
+        document.addEventListener('local:choice:player', (e) => {
+            this.socket.emit('client:choice:player', e.detail.player);
+        })
     }
 }

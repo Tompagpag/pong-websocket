@@ -6,7 +6,8 @@ export default class UserInterface {
         //----------------------------------------------------------
         // quand on clique sur le bouton "Se connecter sans s'authentifier"
         document.querySelector("#btnConnect").addEventListener('click', this.pseudoChoice );
-        document.querySelector("#join-game").addEventListener('click', this.displayBoard );
+        document.querySelector("#join-game-1").addEventListener('click', this.displayBoard );
+        document.querySelector("#join-game-2").addEventListener('click', this.displayBoard );
         document.querySelector("#start").addEventListener('click', this.drawGame );
     }
 
@@ -20,10 +21,12 @@ export default class UserInterface {
     }
 
 
-    // uiShowInfos(pseudoP1, pseudoP2, spectators) {
-      //     console.log("ici");
-      //     console.log(pseudoP1, pseudoP2, spectators);
-      // }
+    uiShowInfos(pseudoP1, pseudoP2, spectators) {
+          document.getElementById("player-one").innerText = `${pseudoP1 || 'Joueur 1'}`;
+          document.getElementById("player-two").innerText = `${pseudoP2 || 'Joueur 2'}`;
+          document.getElementById("viewers").innerText = `${spectators.length} spectateur${spectators > 1 ? 's' : ''}`;
+          console.log(pseudoP1, pseudoP2, spectators);
+    }
 
     pseudoChoice(alertPseudo = false) {
         if(alertPseudo === true) alert(`Choisissez un autre pseudo, celui ci est déjà utilisé !`);
@@ -39,11 +42,11 @@ export default class UserInterface {
         }
     }
 
-    displayBoard() {
+    displayBoard(event) {
         document.querySelector(".authenticated").classList.add('hide');
         document.querySelector(".party-container").classList.remove('hide');
+        document.dispatchEvent(new CustomEvent('local:choice:player', {detail: {player: `${event.currentTarget.id.includes('1') ? 'player1' : 'player2'}`}}));
         window.scrollTo(0, document.body.scrollHeight);
-        this.drawGame;
     }
 
     drawGame() {

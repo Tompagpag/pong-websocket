@@ -34,8 +34,14 @@
   justify-content: center;
 }
 
-#join-game {
+#join-game-1 {
   margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.player-choice {
+  display: flex;
+  flex-direction: column;
 }
 
 h3 {
@@ -56,10 +62,12 @@ h3 {
 
 #player-one {
   background-color: #0556B5;
+  color: white;
 }
 
 #player-two {
   background-color: #BB070E;
+  color: white;
 }
 
 
