@@ -1,1 +1,2 @@
-alert("Hello pong !")
+import ClientPong from './ClientPong.js';
+new ClientPong();

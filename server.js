@@ -4,7 +4,9 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import serveStatic from 'serve-static';
 import finalhandler from 'finalhandler';
-import { Server } from "socket.io";
+
+
+import ServerPong from './app/ServerPong.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -19,8 +21,20 @@ const serverHttp = http.createServer((req,res) =>
 
 serverHttp.listen(9000, () => { console.log(`http://localhost:9000`); });
 
-//----------------------------------------------------------
-// Mise en place des WebSockets
-//----------------------------------------------------------
+new ServerPong(serverHttp);
 
-const io = new Server(serverHttp);
+
+
+
+
+
+// io.on('connection', (socket) => {
+
+//     // on envoie dès la connexion toute les infos de la partie (la liste des spectateurs et les 2 joueurs)
+//     socket.emit('server:players:infos', player1.pseudo, player2.pseudo, spectators);
+
+
+
+// });
+
+// gerer les users, si player, si spectateur, quand on a deux player on peut lancer le jeu
